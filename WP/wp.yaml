@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp
+  labels:
+    app: wp
+    app1: prod
+spec:
+  selector:
+    matchLabels:
+      app: db
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db
+        tier: frontend
+    spec:
+      containers:
+      - image: wordpress:4.8-apache
+        name: wp
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: dbsvc.wp.svc.cluster.local
+        - name: WORDPRESS_DB_USER
+          value: wpuser
+        - name: WORDPRESS_DB_PASSWORD
+          value: wppass123
+        - name: WORDPRESS_DB_NAME
+          value: wpdb
+        ports:
+        - containerPort: 80
+          name: wordpress
