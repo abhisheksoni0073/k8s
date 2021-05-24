@@ -1,0 +1,4 @@
+MARIADB_ROOT_HOST=db-svc.wp.svc.cluster.local
+MARIADB_USER=wpuser
+MARIADB_PASSWORD=wppass123
+MARIADB_DATABASE=wpdb

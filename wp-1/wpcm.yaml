@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  MARIADB_DATABASE: wpdb
+  MARIADB_PASSWORD: wppass123
+  MARIADB_ROOT_HOST: db-svc.wp.svc.cluster.local
+  MARIADB_USER: wpuser
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: wpcm
